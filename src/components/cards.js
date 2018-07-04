@@ -13,6 +13,7 @@ class Cards extends Component {
   componentDidMount() {
     const url = "https://guarded-thicket-22918.herokuapp.com/apps";
     const token = process.env.REACT_APP_API_TOKEN;
+    //TODO: handle expired tokens gracefully
 
     return fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
@@ -35,16 +36,12 @@ class Cards extends Component {
   }
 
   render() {
+    console.log(this.state.apps);
     return (
       <React.Fragment>
         {this.state.apps.map(app => (
           <React.Fragment>
-            <Card
-              key={app.id}
-              name={app.name}
-              created={app.created}
-              logo={app.logo}
-            />
+            <Card id={app.id} app={app} />
           </React.Fragment>
         ))}
       </React.Fragment>

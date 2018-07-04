@@ -40,6 +40,11 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.Card-created {
+  font-size: 1em;
+  font-weight: 200;
+}
+
 .Card-name {
   font-size: 1em;
 }
