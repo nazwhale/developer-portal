@@ -6,7 +6,8 @@ class CardList extends Component {
   constructor() {
     super();
     this.state = {
-      projects: [] //the api returns "apps", but from here on we refer to them as "projects" to avoid confusion with the main App component
+      projectsFetched: false,
+      projects: [] //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
     };
   }
 
@@ -29,23 +30,40 @@ class CardList extends Component {
     })
       .then(response => {
         response.json().then(body => {
-          this.setState({ projects: body.apps });
+          this.setState({ projectsFetched: true, projects: body.apps });
         });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));
   }
 
   render() {
-    console.log(this.state.projects);
-    return (
-      <React.Fragment>
-        {this.state.projects.map(project => (
-          <React.Fragment key={project.id}>
-            <Card project={project} />
-          </React.Fragment>
-        ))}
-      </React.Fragment>
-    );
+    //TODO: refactor this
+    const { projectsFetched, projects } = this.state;
+    console.log(projects);
+
+    if (projectsFetched === false) {
+      return (
+        <div className="Card">
+          <h3 className="Card-text-created">Apps loading...</h3>
+        </div>
+      );
+    } else if (projects.length === 0) {
+      return (
+        <div className="Card">
+          <h3 className="Card-text-created">No apps to display!</h3>
+        </div>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          {projects.map(project => (
+            <React.Fragment key={project.id}>
+              <Card project={project} />
+            </React.Fragment>
+          ))}
+        </React.Fragment>
+      );
+    }
   }
 }
 
