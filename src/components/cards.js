@@ -40,8 +40,8 @@ class Cards extends Component {
     return (
       <React.Fragment>
         {this.state.apps.map(app => (
-          <React.Fragment>
-            <Card id={app.id} app={app} />
+          <React.Fragment key={app.id}>
+            <Card app={app} />
           </React.Fragment>
         ))}
       </React.Fragment>
