@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import Card from "./card";
 import "../App.css";
+import placeholderLogo from "../assets/placeholder_logo.png";
 
 class CardList extends Component {
   constructor() {
     super();
     this.state = {
       projectsFetched: false,
-      projects: [] //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
+      projects: [
+        {
+          id: "",
+          created: "Apps loading",
+          name: "...............",
+          logo: { placeholderLogo }
+        } //TODO:refactor a Card's default state to the above, so a card with no props renders this
+      ] //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
     };
   }
 
@@ -16,6 +24,8 @@ class CardList extends Component {
     const token = process.env.REACT_APP_API_TOKEN;
 
     //TODO: handle expired tokens gracefully
+    //TODO: look into why images break eventually with "Failed to load resource: net::ERR_CONNECTION_RESET"
+    //TODO: look into what I really need in the request
     return fetch(url, {
       method: "GET",
       // mode: "cors", // no-cors, cors, *same-origin
@@ -41,13 +51,19 @@ class CardList extends Component {
     const { projectsFetched, projects } = this.state;
     console.log(projects);
 
-    if (projectsFetched === false) {
-      return (
-        <div className="Card">
-          <h3 className="Card-text-created">Apps loading...</h3>
-        </div>
-      );
-    } else if (projects.length === 0) {
+    // if (projectsFetched === false) {
+    //   return (
+    //     <Card
+    //       project={{
+    //         id: "",
+    //         created: "Apps loading",
+    //         name: "...............",
+    //         logo: { placeholderLogo }
+    //       }}
+    //     />
+    //   );
+    // } else
+    if (projectsFetched && projects.length === 0) {
       return (
         <div className="Card">
           <h3 className="Card-text-created">No apps to display!</h3>

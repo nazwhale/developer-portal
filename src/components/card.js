@@ -24,6 +24,7 @@ class Card extends Component {
   };
 
   render() {
+    //TODO:set default state before props come in
     const { id, created, name, logo } = this.props.project;
     return (
       <div className="Card" key={id}>
