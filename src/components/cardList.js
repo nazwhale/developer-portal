@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from "./card";
 import "../App.css";
 
-class Cards extends Component {
+class CardList extends Component {
   constructor() {
     super();
     this.state = {
@@ -49,4 +49,4 @@ class Cards extends Component {
   }
 }
 
-export default Cards;
+export default CardList;

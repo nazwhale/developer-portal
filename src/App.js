@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./assets/pixel_flower.png";
 import "./App.css";
-import Cards from "./components/cards";
+import CardList from "./components/cardList";
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
             <span className="App-title-container">Dev Portal</span>
           </div>
         </header>
-        <Cards />
+        <CardList />
       </div>
     );
   }
