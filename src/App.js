@@ -10,7 +10,7 @@ class App extends Component {
         <header className="App-header">
           <div className="App-logo-container">
             <img src={logo} className="App-logo" alt="logo" />
-            <span className="App-title">Developer Portal</span>
+            <span className="App-title-container">Dev Portal</span>
           </div>
         </header>
         <Cards />

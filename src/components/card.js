@@ -13,11 +13,10 @@ class Card extends Component {
   };
 
   renderImage = logo => {
-    if (this.state.imageLoaded) {
-      return logo;
-    } else {
+    if (!this.state.imageLoaded) {
       return placeholderLogo;
     }
+    return logo;
   };
 
   parseCreatedDatetime = datetime => {
@@ -25,21 +24,20 @@ class Card extends Component {
   };
 
   render() {
-    console.log("load", this.state.loaded);
-    const { id, created, name, logo } = this.props.app;
+    const { id, created, name, logo } = this.props.project;
     return (
-      <React.Fragment>
-        <div className="Card" key={id}>
-          <h3 className="Card-created">{this.parseCreatedDatetime}</h3>
-          <h1 className="Card-name">{name}</h1>
-          <img
-            onLoad={this.onImageLoad}
-            src={this.renderImage(logo)}
-            className="App-logo"
-            alt="logo"
-          />
-        </div>
-      </React.Fragment>
+      <div className="Card" key={id}>
+        <h3 className="Card-text-created">
+          {this.parseCreatedDatetime(created)}
+        </h3>
+        <h1 className="Card-text-name">{name}</h1>
+        <img
+          onLoad={this.onImageLoad}
+          src={this.renderImage(logo)}
+          className="Card-logo"
+          alt="logo"
+        />
+      </div>
     );
   }
 }
