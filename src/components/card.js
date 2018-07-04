@@ -20,13 +20,17 @@ class Card extends Component {
     }
   };
 
+  parseCreatedDatetime = datetime => {
+    return datetime.split("T")[0];
+  };
+
   render() {
     console.log("load", this.state.loaded);
     const { id, created, name, logo } = this.props.app;
     return (
       <React.Fragment>
         <div className="Card" key={id}>
-          <h3 className="Card-created">{created}</h3>
+          <h3 className="Card-created">{this.parseCreatedDatetime}</h3>
           <h1 className="Card-name">{name}</h1>
           <img
             onLoad={this.onImageLoad}
