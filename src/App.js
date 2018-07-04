@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./assets/pixel_flower.png";
 import "./App.css";
-import Card from "./components/card";
+import Cards from "./components/cards";
 
 class App extends Component {
   render() {
@@ -12,9 +12,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
         </header>
-        <Card />
-        <Card />
-        <Card />
+        <Cards />
       </div>
     );
   }
