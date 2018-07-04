@@ -5,6 +5,7 @@ import Cards from "./components/cards";
 
 class App extends Component {
   render() {
+    //TODO: extract <Header /> component
     return (
       <div className="App">
         <header className="App-header">
