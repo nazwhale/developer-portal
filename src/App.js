@@ -5,6 +5,7 @@ import Cards from "./components/cards";
 
 class App extends Component {
   render() {
+    console.log("card props", this.props);
     return (
       <div className="App">
         <header className="App-header">

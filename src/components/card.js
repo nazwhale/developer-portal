@@ -5,8 +5,9 @@ class Card extends Component {
   render() {
     return (
       <div className="Card">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h1 className="Card-name">An App</h1>
+        <img href={this.props.logo} className="App-logo" alt="logo" />
+        <h1>{this.props.created}</h1>
+        <h1 className="Card-name">{this.props.name}</h1>
       </div>
     );
   }

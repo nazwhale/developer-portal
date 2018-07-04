@@ -29,7 +29,6 @@ class Cards extends Component {
       .then(response => {
         response.json().then(body => {
           this.setState({ apps: body.apps });
-          console.log("state", this.state.apps);
         });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));
@@ -38,11 +37,19 @@ class Cards extends Component {
   render() {
     return (
       <React.Fragment>
-        <Card />
-        <Card />
-        <Card />
+        {this.state.apps.map(app => (
+          <React.Fragment>
+            <Card
+              key={app.id}
+              name={app.name}
+              created={app.created}
+              logo={app.logo}
+            />
+          </React.Fragment>
+        ))}
       </React.Fragment>
     );
+    // }
   }
 }
 
