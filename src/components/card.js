@@ -11,7 +11,8 @@ class Card extends Component {
       name: this.props.project.name,
       created: this.props.project.created,
       logo: this.props.project.logo,
-      buttonValue: ""
+      newName: "",
+      newLogo: ""
     };
   }
 
@@ -30,9 +31,9 @@ class Card extends Component {
     return datetime.split("T")[0];
   };
 
-  handleSubmit = event => {
+  handleSubmitNewName = event => {
     event.preventDefault();
-    const data = { name: this.state.buttonValue };
+    const data = { name: this.state.newName };
     const url = `https://guarded-thicket-22918.herokuapp.com/apps/${
       this.state.id
     }`;
@@ -52,8 +53,34 @@ class Card extends Component {
       .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
-  setText = event => {
-    this.setState({ buttonValue: event.target.value });
+  setNewName = event => {
+    this.setState({ newName: event.target.value });
+  };
+
+  handleSubmitNewLogo = event => {
+    event.preventDefault();
+    const data = { logo: this.state.newLogo };
+    const url = `https://guarded-thicket-22918.herokuapp.com/apps/${
+      this.state.id
+    }`;
+
+    return fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: process.env.REACT_APP_API_TOKEN,
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: data
+    })
+      .then(response => {
+        response.json();
+        this.setState({ logo: data.logo });
+      })
+      .catch(error => console.error(`Fetch Error =\n`, error));
+  };
+
+  setNewLogo = event => {
+    this.setState({ newLogo: event.target.value });
   };
 
   render() {
@@ -71,13 +98,25 @@ class Card extends Component {
           alt="logo"
         />
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmitNewName}>
           <label htmlFor="username">
-            Enter username
+            Enter new name
             <input
               type="text"
               value={this.state.value}
-              onChange={this.setText}
+              onChange={this.setNewName}
+            />
+          </label>
+          <input type="submit" value="submit" />
+        </form>
+
+        <form onSubmit={this.handleSubmitNewLogo}>
+          <label htmlFor="logo">
+            Enter logo url
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.setNewLogo}
             />
           </label>
           <input type="submit" value="submit" />
