@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Card from "./card";
+import CardInfo from "./cardInfo";
 import CardPlaceholder from "./cardPlaceholder";
+import CardUsers from "./cardUsers";
 import "../App.css";
 
 class CardList extends Component {
@@ -8,7 +9,8 @@ class CardList extends Component {
     super();
     this.state = {
       projectsFetched: false,
-      projects: [] //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
+      projects: [], //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
+      selectedProject: {}
     };
   }
 
@@ -26,11 +28,20 @@ class CardList extends Component {
     })
       .then(response => {
         response.json().then(body => {
-          this.setState({ projectsFetched: true, projects: body.apps });
+          this.setState({
+            projectsFetched: true,
+            projects: body.apps,
+            selectedProject: body.apps[0]
+          });
         });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));
   }
+
+  handleClick = project => {
+    console.log("button");
+    this.setState({ selectedProject: project });
+  };
 
   render() {
     //TODO: refactor this
@@ -41,15 +52,19 @@ class CardList extends Component {
         skeletonText = "...................";
       return <CardPlaceholder text={text} subText={skeletonText} />;
     } else if (projects.length === 0) {
-      return <CardPlaceholder text="No apps to display" subText="" />;
+      return (
+        <CardPlaceholder text="No apps to display. Go make one!" subText="" />
+      );
     } else {
       return (
         <React.Fragment>
           {projects.map(project => (
-            <React.Fragment key={project.id}>
-              <Card project={project} projectsFetched={projectsFetched} />
-            </React.Fragment>
+            <div className="Card" key={project.id}>
+              <CardInfo project={project} projectsFetched={projectsFetched} />
+              <button onClick={() => this.handleClick(project)}>Select</button>
+            </div>
           ))}
+          <CardUsers project={this.state.selectedProject} />
         </React.Fragment>
       );
     }
