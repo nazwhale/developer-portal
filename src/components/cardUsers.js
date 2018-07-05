@@ -42,6 +42,7 @@ class CardUsers extends Component {
   render() {
     return (
       <div className="Card-users" key={this.props.project.id}>
+        <h1 className="Card-text-name">Users for {this.props.project.name}</h1>
         {this.state.users.map(user => <div key={user.id}>{user.name}</div>)}
       </div>
     );

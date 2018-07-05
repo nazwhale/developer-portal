@@ -4,3 +4,9 @@ body {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   background-color: #049cd8;
 }
+
+button,
+input {
+  background-color: #00ffff;
+  margin: 5px;
+}

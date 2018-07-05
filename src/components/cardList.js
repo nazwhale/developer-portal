@@ -3,6 +3,7 @@ import CardInfo from "./cardInfo";
 import CardPlaceholder from "./cardPlaceholder";
 import CardUsers from "./cardUsers";
 import "../App.css";
+import usersIcon from "../assets/users_icon.png";
 
 class CardList extends Component {
   constructor() {
@@ -57,15 +58,32 @@ class CardList extends Component {
       );
     } else {
       return (
-        <React.Fragment>
-          {projects.map(project => (
-            <div className="Card" key={project.id}>
-              <CardInfo project={project} projectsFetched={projectsFetched} />
-              <button onClick={() => this.handleClick(project)}>Select</button>
-            </div>
-          ))}
-          <CardUsers project={this.state.selectedProject} />
-        </React.Fragment>
+        <div className="Card-container">
+          <div className="Left">
+            {projects.map(project => (
+              <div className="Card" key={project.id}>
+                <div>
+                  <CardInfo
+                    project={project}
+                    projectsFetched={projectsFetched}
+                  />
+                </div>
+                <div>
+                  <input
+                    onClick={() => this.handleClick(project)}
+                    type="image"
+                    alt="users icon"
+                    src={usersIcon}
+                    className="Card-user-icon"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="Right">
+            <CardUsers project={this.state.selectedProject} />
+          </div>
+        </div>
       );
     }
   }
