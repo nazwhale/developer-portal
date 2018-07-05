@@ -5,7 +5,9 @@ import placeholderLogo from "../assets/placeholder_logo.png";
 class Card extends Component {
   constructor(props: Props) {
     super(props);
-    this.state = { imageLoaded: false };
+    this.state = {
+      imageLoaded: false
+    };
   }
 
   onImageLoad = () => {
@@ -24,7 +26,6 @@ class Card extends Component {
   };
 
   render() {
-    //TODO:set default state before props come in
     const { id, created, name, logo } = this.props.project;
     return (
       <div className="Card" key={id}>
