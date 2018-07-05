@@ -1,129 +1,46 @@
 import React, { Component } from "react";
 import "../App.css";
-import placeholderLogo from "../assets/placeholder_logo.png";
+import CardInfo from "./cardInfo";
+import CardUsers from "./cardUsers";
 
 class Card extends Component {
-  constructor(props: Props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      imageLoaded: false,
-      id: this.props.project.id,
-      name: this.props.project.name,
-      created: this.props.project.created,
-      logo: this.props.project.logo,
-      newName: "",
-      newLogo: ""
+      usersFetched: false,
+      users: [] //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
     };
   }
 
-  onImageLoad = () => {
-    this.setState(() => ({ imageLoaded: true }));
-  };
-
-  renderImage = logo => {
-    if (!this.state.imageLoaded) {
-      return placeholderLogo;
-    }
-    return logo;
-  };
-
-  parseCreatedDatetime = datetime => {
-    return datetime.split("T")[0];
-  };
-
-  handleSubmitNewName = event => {
-    event.preventDefault();
-    const data = { name: this.state.newName };
+  componentDidMount() {
     const url = `https://guarded-thicket-22918.herokuapp.com/apps/${
-      this.state.id
-    }`;
-
-    console.log("data", data);
+      this.props.project.id
+    }/users`;
 
     return fetch(url, {
-      method: "PUT",
+      method: "GET",
       headers: {
         Authorization: process.env.REACT_APP_API_TOKEN,
         "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(data)
+      }
     })
       .then(response => {
-        console.log("response", response);
-        response.json();
-        this.setState({ name: data.name });
+        response.json().then(body => {
+          this.setState({ usersFetched: true, users: body.users });
+          console.log("users", this.state.users);
+        });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));
-  };
-
-  handleNameChange = event => {
-    this.setState({ newName: event.target.value });
-  };
-
-  handleSubmitNewLogo = event => {
-    event.preventDefault();
-    const data = { logo: this.state.newLogo };
-    const url = `https://guarded-thicket-22918.herokuapp.com/apps/${
-      this.state.id
-    }`;
-
-    return fetch(url, {
-      method: "PUT",
-      headers: {
-        Authorization: process.env.REACT_APP_API_TOKEN,
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => {
-        response.json();
-        this.setState({ logo: data.logo });
-      })
-      .catch(error => console.error(`Fetch Error =\n`, error));
-  };
-
-  handleLogoChange = event => {
-    this.setState({ newLogo: event.target.value });
-  };
+  }
 
   render() {
-    const { id, created, name, logo } = this.state;
     return (
-      <div className="Card" key={id}>
-        <h3 className="Card-text-created">
-          {this.parseCreatedDatetime(created)}
-        </h3>
-        <h1 className="Card-text-name">{name}</h1>
-        <img
-          onLoad={this.onImageLoad}
-          src={this.renderImage(logo)}
-          className="Card-logo"
-          alt="logo"
+      <div className="Card" key={this.props.project.id}>
+        <CardInfo
+          project={this.props.project}
+          projectsFetched={this.props.projectsFetched}
         />
-
-        <form onSubmit={this.handleSubmitNewName}>
-          <label htmlFor="username">
-            Enter new name
-            <input
-              type="text"
-              value={this.state.newName}
-              onChange={this.handleNameChange}
-            />
-          </label>
-          <input type="submit" value="submit" />
-        </form>
-
-        <form onSubmit={this.handleSubmitNewLogo}>
-          <label htmlFor="logo">
-            Enter logo url
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleLogoChange}
-            />
-          </label>
-          <input type="submit" value="submit" />
-        </form>
+        <CardUsers users={this.state.users} />
       </div>
     );
   }

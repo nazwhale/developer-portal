@@ -1,6 +1,6 @@
 .Card {
   background-color: #43b047;
-  height: 200px;
+  height: 300px;
   width: 400px;
   margin: 60px;
   padding: 20px 40px;
@@ -24,6 +24,7 @@
 .Card-logo {
   height: 80px;
   vertical-align: middle;
+  margin-bottom: 10px;
 }
 
 .Header {
@@ -51,4 +52,3 @@
   padding-top: 100px;
   text-align: right;
 }
-
