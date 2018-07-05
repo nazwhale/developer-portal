@@ -38,22 +38,25 @@ class Card extends Component {
       this.state.id
     }`;
 
+    console.log("data", data);
+
     return fetch(url, {
       method: "PUT",
       headers: {
         Authorization: process.env.REACT_APP_API_TOKEN,
         "Content-Type": "application/json; charset=utf-8"
       },
-      body: data
+      body: JSON.stringify(data)
     })
       .then(response => {
+        console.log("response", response);
         response.json();
         this.setState({ name: data.name });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
-  setNewName = event => {
+  handleNameChange = event => {
     this.setState({ newName: event.target.value });
   };
 
@@ -70,7 +73,7 @@ class Card extends Component {
         Authorization: process.env.REACT_APP_API_TOKEN,
         "Content-Type": "application/json; charset=utf-8"
       },
-      body: data
+      body: JSON.stringify(data)
     })
       .then(response => {
         response.json();
@@ -79,7 +82,7 @@ class Card extends Component {
       .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
-  setNewLogo = event => {
+  handleLogoChange = event => {
     this.setState({ newLogo: event.target.value });
   };
 
@@ -103,8 +106,8 @@ class Card extends Component {
             Enter new name
             <input
               type="text"
-              value={this.state.value}
-              onChange={this.setNewName}
+              value={this.state.newName}
+              onChange={this.handleNameChange}
             />
           </label>
           <input type="submit" value="submit" />
@@ -116,7 +119,7 @@ class Card extends Component {
             <input
               type="text"
               value={this.state.value}
-              onChange={this.setNewLogo}
+              onChange={this.handleLogoChange}
             />
           </label>
           <input type="submit" value="submit" />
