@@ -47,7 +47,6 @@ class CardInfo extends Component {
       body: JSON.stringify(data)
     })
       .then(response => {
-        console.log("response", response);
         response.json();
         this.setState({ name: data.name });
       })

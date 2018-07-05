@@ -1,6 +1,5 @@
 .Card {
   display: flex; /* or inline-flex */
-
   background-color: #43b047;
   height: 250px;
   width: 400px;

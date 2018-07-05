@@ -33,7 +33,6 @@ class CardUsers extends Component {
       .then(response => {
         response.json().then(body => {
           this.setState({ usersFetched: true, users: body.users });
-          console.log("users", this.state.users);
         });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));

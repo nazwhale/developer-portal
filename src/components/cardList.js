@@ -40,7 +40,6 @@ class CardList extends Component {
   }
 
   handleClick = project => {
-    console.log("button");
     this.setState({ selectedProject: project });
   };
 
@@ -49,8 +48,8 @@ class CardList extends Component {
     const { projectsFetched, projects } = this.state;
 
     if (!projectsFetched) {
-      const text = "Apps loading",
-        skeletonText = "...................";
+      const text = "Apps loading...",
+        skeletonText = "";
       return <CardPlaceholder text={text} subText={skeletonText} />;
     } else if (projects.length === 0) {
       return (
