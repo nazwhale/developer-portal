@@ -14,15 +14,13 @@ class CardList extends Component {
 
   componentDidMount() {
     const url = "https://guarded-thicket-22918.herokuapp.com/apps";
-    const token = process.env.REACT_APP_API_TOKEN;
 
     //TODO: handle expired tokens gracefully
     //TODO: look into why images break eventually with "Failed to load resource: net::ERR_CONNECTION_RESET"
-    //TODO: look into what I really need in the request
     return fetch(url, {
       method: "GET",
       headers: {
-        Authorization: token,
+        Authorization: process.env.REACT_APP_API_TOKEN,
         "Content-Type": "application/json; charset=utf-8"
       }
     })
