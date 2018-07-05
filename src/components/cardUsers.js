@@ -5,18 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
   return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
   };
 }
 
@@ -30,7 +23,7 @@ const styles = theme => ({
   }
 });
 
-class SimpleModal extends React.Component {
+class UsersModal extends React.Component {
   state = {
     open: false
   };
@@ -60,9 +53,11 @@ class SimpleModal extends React.Component {
               Users:
             </Typography>
             {this.props.users.map(user => (
-              <Typography variant="subheading" id="simple-modal-description">
-                {user.name}
-              </Typography>
+              <div>
+                <Typography variant="subheading" id="simple-modal-description">
+                  {user.name}
+                </Typography>
+              </div>
             ))}
           </div>
         </Modal>
@@ -71,11 +66,11 @@ class SimpleModal extends React.Component {
   }
 }
 
-SimpleModal.propTypes = {
+UsersModal.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 // We need an intermediary variable for handling the recursive nesting.
-const SimpleModalWrapped = withStyles(styles)(SimpleModal);
+const UsersModalWrapped = withStyles(styles)(UsersModal);
 
-export default SimpleModalWrapped;
+export default UsersModalWrapped;
