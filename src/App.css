@@ -14,6 +14,7 @@
 }
 
 .Card-container {
+  justify-content: space-evenly;
   display: flex; /* or inline-flex */
 }
 
