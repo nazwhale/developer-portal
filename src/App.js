@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Welcome {this.props.user.username}</h2>
+        <h2>Welcome {this.props.user.email}</h2>
         <p className="App-intro">
           <button
             type="button"
