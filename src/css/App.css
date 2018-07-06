@@ -18,12 +18,6 @@
   display: flex; /* or inline-flex */
 }
 
-.Left {
-}
-
-.Right {
-}
-
 .Card-users {
   background-color: #43b047;
   height: 800px;
@@ -100,8 +94,7 @@
   letter-spacing: 0.2rem;
   transition: 0.3s opacity ease;
   cursor: pointer;
-  margin-top: 45px;
-  margin-bottom: 45px;
+  margin: 45px; /* to balance against larger pixel flower image */
 }
 
 .Header-logout-button:hover {
