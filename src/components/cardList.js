@@ -4,6 +4,7 @@ import CardPlaceholder from "./cardPlaceholder";
 import CardUsers from "./cardUsers";
 import "../css/App.css";
 import usersIcon from "../assets/users_icon.png";
+import { fetchProjects } from "./apiHelpers.js";
 
 class CardList extends Component {
   constructor() {
@@ -17,36 +18,20 @@ class CardList extends Component {
   }
 
   componentDidMount() {
-    const url = "https://guarded-thicket-22918.herokuapp.com/apps";
-
-    //TODO: handle expired tokens gracefully
     //TODO: look into why images break eventually with "Failed to load resource: net::ERR_CONNECTION_RESET"
-    return (
-      fetch(url, {
-        method: "GET",
-        headers: {
-          Authorization: process.env.REACT_APP_API_TOKEN,
-          "Content-Type": "application/json; charset=utf-8"
-        }
-      })
-        .then(response => {
-          response.json().then(body => {
-            if (body.error === undefined) {
-              this.setState({
-                projectsFetched: true,
-                projects: body.apps,
-                selectedProject: body.apps[0]
-              });
-              console.log("state", this.state);
-              console.log();
-            } else {
-              this.setState({ error: body.error });
-            }
-          });
-        })
-        //TODO: check if I'm doing this right (I suspect not)
-        .catch(error => console.error(`Fetch Error =\n`, error))
-    );
+    return fetchProjects({
+      method: "GET"
+    }).then(body => {
+      if (body.error === undefined) {
+        this.setState({
+          projectsFetched: true,
+          projects: body.apps,
+          selectedProject: body.apps[0]
+        });
+      } else {
+        this.setState({ error: body.error });
+      }
+    });
   }
 
   selectProject = project => {
@@ -56,9 +41,7 @@ class CardList extends Component {
   };
 
   isSelected = project => {
-    console.log(project.id);
     if (project.id === this.state.selectedProject.id) {
-      console.log("match");
       return (
         <input
           onClick={() => this.selectProject(project)}

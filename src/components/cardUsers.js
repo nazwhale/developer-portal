@@ -26,7 +26,7 @@ class CardUsers extends Component {
     return fetch(url, {
       method: "GET",
       headers: {
-        Authorization: process.env.REACT_APP_API_TOKEN,
+        Authorization: localStorage.getItem("bloom_id_token"),
         "Content-Type": "application/json; charset=utf-8"
       }
     })
