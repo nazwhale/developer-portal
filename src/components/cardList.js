@@ -10,6 +10,7 @@ class CardList extends Component {
     super();
     this.state = {
       projectsFetched: false,
+      error: "",
       projects: [], //the api returns "apps", but we refer to them as "projects" to avoid confusion with the main App component
       selectedProject: {}
     };
@@ -20,23 +21,30 @@ class CardList extends Component {
 
     //TODO: handle expired tokens gracefully
     //TODO: look into why images break eventually with "Failed to load resource: net::ERR_CONNECTION_RESET"
-    return fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: process.env.REACT_APP_API_TOKEN,
-        "Content-Type": "application/json; charset=utf-8"
-      }
-    })
-      .then(response => {
-        response.json().then(body => {
-          this.setState({
-            projectsFetched: true,
-            projects: body.apps,
-            selectedProject: body.apps[0]
-          });
-        });
+    return (
+      fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: process.env.REACT_APP_API_TOKEN,
+          "Content-Type": "application/json; charset=utf-8"
+        }
       })
-      .catch(error => console.error(`Fetch Error =\n`, error));
+        .then(response => {
+          response.json().then(body => {
+            if (body.error === undefined) {
+              this.setState({
+                projectsFetched: true,
+                projects: body.apps,
+                selectedProject: body.apps[0]
+              });
+            } else {
+              this.setState({ error: body.error });
+            }
+          });
+        })
+        //TODO: check if I'm doing this right (I suspect not)
+        .catch(error => console.error(`Fetch Error =\n`, error))
+    );
   }
 
   handleClick = project => {
@@ -45,12 +53,11 @@ class CardList extends Component {
 
   render() {
     //TODO: refactor this
-    const { projectsFetched, projects } = this.state;
-
-    if (!projectsFetched) {
-      const text = "Apps loading...",
-        skeletonText = "";
-      return <CardPlaceholder text={text} subText={skeletonText} />;
+    const { projectsFetched, projects, error } = this.state;
+    if (error !== "") {
+      return <CardPlaceholder text={`🛑Error: ${error}`} />;
+    } else if (!projectsFetched) {
+      return <CardPlaceholder text="Apps loading..." subText="" />;
     } else if (projects.length === 0) {
       return (
         <CardPlaceholder text="No apps to display. Go make one!" subText="" />

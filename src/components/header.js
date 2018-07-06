@@ -8,7 +8,7 @@ class Header extends Component {
       <header className="Header">
         <div className="Header-logo-container">
           <img src={logo} className="Header-logo" alt="logo" />
-          <span className="Header-title-container">Bloom Dev Portal</span>
+          <span className="Header-title-container">Dev Portal - My Apps</span>
         </div>
       </header>
     );
