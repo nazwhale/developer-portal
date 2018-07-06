@@ -3,17 +3,15 @@ import decode from "jwt-decode";
 export default class AuthService {
   login = (email, password) => {
     const domain = "https://guarded-thicket-22918.herokuapp.com";
-    console.log("fetching token for:", email, password);
+    console.log("Fetching token for:", email, password);
 
     return this.fetch(`${domain}/login`, {
       method: "POST",
       body: JSON.stringify({
         email,
-        password,
-        expiry: "10s"
+        password
       })
     }).then(res => {
-      console.log("response", res);
       this.setToken(res.accessToken);
       return Promise.resolve(res);
     });
@@ -36,7 +34,6 @@ export default class AuthService {
   }
 
   setToken(idToken) {
-    console.log("setting token", idToken);
     localStorage.setItem("bloom_id_token", idToken);
   }
 
@@ -45,12 +42,10 @@ export default class AuthService {
   }
 
   logout() {
-    // Clear user token and profile data from localStorage
     localStorage.removeItem("bloom_id_token");
   }
 
   getProfile = () => {
-    // Using jwt-decode npm package to decode the token
     return decode(this.getToken());
   };
 
@@ -62,9 +57,8 @@ export default class AuthService {
     };
 
     // Setting Authorization header
-    // Authorization: Bearer xxxxxxx.xxxxxxxx.xxxxxx
     if (this.loggedIn()) {
-      headers["Authorization"] = "Bearer " + this.getToken();
+      headers["Authorization"] = this.getToken();
     }
 
     return fetch(url, {
@@ -80,10 +74,10 @@ export default class AuthService {
     if (response.status >= 200 && response.status < 300) {
       // Success status lies between 200 to 300
       return response;
+    } else if (response.status === 401) {
+      throw new Error("Invalid login details - please try again");
     } else {
-      var error = new Error(response.statusText);
-      error.response = response;
-      throw error;
+      throw new Error(response.statusText);
     }
   }
 }

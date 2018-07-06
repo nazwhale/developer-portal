@@ -8,11 +8,10 @@ import withAuth from "./components/login/withAuth";
 const Auth = new AuthService();
 
 class App extends Component {
-  handleLogout() {
-    console.log(this.props);
+  handleLogout = () => {
     Auth.logout();
     this.props.history.replace("/login");
-  }
+  };
 
   bouncer = () => {
     const token = Auth.getToken();
@@ -31,7 +30,7 @@ class App extends Component {
           <button
             type="button"
             className="form-submit"
-            onClick={this.handleLogout.bind(this)}
+            onClick={this.handleLogout}
           >
             Logout
           </button>
