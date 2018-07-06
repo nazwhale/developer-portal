@@ -8,6 +8,7 @@ import withAuth from "./components/login/withAuth";
 const Auth = new AuthService();
 
 class App extends Component {
+  //should test accessToken instead of just expiry - there could be other reasons why it's no longer valid (e.g. servor error)
   bouncer = () => {
     const token = Auth.getToken();
     if (Auth.isTokenExpired(token)) {

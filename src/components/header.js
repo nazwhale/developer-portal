@@ -15,7 +15,7 @@ class Header extends Component {
     return (
       <header className="Header">
         <img src={logo} className="Header-logo" alt="logo" />
-        <a>Dev Portal - My Apps</a>
+        <a>Bloom Dev Portal: My Apps</a>
         <div className="Header-right">
           <a>Hi {this.props.user.email}</a>
           <button

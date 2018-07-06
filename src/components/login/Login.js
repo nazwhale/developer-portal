@@ -51,7 +51,7 @@ class Login extends Component {
             </form>
           </div>
         </div>
-        <img src={Logo} className="Logo" />
+        <img src={Logo} alt="pixel flower logo" className="Logo" />
       </React.Fragment>
     );
   }

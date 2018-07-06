@@ -37,6 +37,8 @@ class CardList extends Component {
                 projects: body.apps,
                 selectedProject: body.apps[0]
               });
+              console.log("state", this.state);
+              console.log();
             } else {
               this.setState({ error: body.error });
             }
@@ -47,13 +49,40 @@ class CardList extends Component {
     );
   }
 
-  handleClick = project => {
-    this.setState({ selectedProject: project });
+  selectProject = project => {
+    this.setState({
+      selectedProject: project
+    });
+  };
+
+  isSelected = project => {
+    console.log(project.id);
+    if (project.id === this.state.selectedProject.id) {
+      console.log("match");
+      return (
+        <input
+          onClick={() => this.selectProject(project)}
+          type="image"
+          alt="users icon"
+          src={usersIcon}
+          className="Card-user-icon selected"
+        />
+      );
+    }
+    return (
+      <input
+        onClick={() => this.selectProject(project)}
+        type="image"
+        alt="users icon"
+        src={usersIcon}
+        className="Card-user-icon"
+      />
+    );
   };
 
   render() {
     //TODO: refactor this
-    const { projectsFetched, projects, error } = this.state;
+    const { projectsFetched, projects, error, selectedProject } = this.state;
     if (error !== "") {
       return <CardPlaceholder text={`🛑Error: ${error}`} />;
     } else if (!projectsFetched) {
@@ -74,20 +103,12 @@ class CardList extends Component {
                     projectsFetched={projectsFetched}
                   />
                 </div>
-                <div>
-                  <input
-                    onClick={() => this.handleClick(project)}
-                    type="image"
-                    alt="users icon"
-                    src={usersIcon}
-                    className="Card-user-icon"
-                  />
-                </div>
+                {this.isSelected(project)}
               </div>
             ))}
           </div>
           <div className="Right">
-            <CardUsers project={this.state.selectedProject} />
+            <CardUsers project={selectedProject} />
           </div>
         </div>
       );

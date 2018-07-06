@@ -54,19 +54,24 @@
 }
 
 .Card-user-icon {
+  opacity: 0.6;
   max-height: 40px;
   max-width: 40px;
   background-color: transparent;
 }
 
+.selected {
+  opacity: 1;
+}
+
 .Card-user-icon:hover {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .Header {
   background-color: #222;
   height: 120px;
-  padding: 10px;
+  padding: 10px 50px;
   color: #00ffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -74,9 +79,7 @@
 
 .Header a {
   float: left;
-  padding: 20px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 50px 40px;
   font-size: 18px;
 }
 
@@ -87,7 +90,6 @@
 
 .Header-logo {
   height: 80px;
-  padding-left: 10px;
 }
 
 .Header-logout-button {
