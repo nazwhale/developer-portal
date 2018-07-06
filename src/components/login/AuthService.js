@@ -2,10 +2,9 @@ import decode from "jwt-decode";
 
 export default class AuthService {
   login = (email, password) => {
-    const domain = "https://guarded-thicket-22918.herokuapp.com"; // API server domain
+    const domain = "https://guarded-thicket-22918.herokuapp.com";
     console.log("fetching token for:", email, password);
 
-    // Get a token from api server using the fetch api
     return this.fetch(`${domain}/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -15,22 +14,20 @@ export default class AuthService {
       })
     }).then(res => {
       console.log("response", res);
-      this.setToken(res.accessToken); // Setting the token in localStorage
+      this.setToken(res.accessToken);
       return Promise.resolve(res);
     });
   };
 
   loggedIn() {
-    // Checks if there is a saved token and it's still valid
-    const token = this.getToken(); // GEtting token from localstorage
-    return token !== null && this.isTokenExpired(token) === false; // handwaiving here
+    const token = this.getToken();
+    return token !== null && this.isTokenExpired(token) === false;
   }
 
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
-        // Checking if token is expired. N
         return true;
       } else return false;
     } catch (err) {
@@ -40,12 +37,10 @@ export default class AuthService {
 
   setToken(idToken) {
     console.log("setting token", idToken);
-    // Saves user token to localStorage
     localStorage.setItem("bloom_id_token", idToken);
   }
 
   getToken() {
-    // Retrieves the user token from localStorage
     return localStorage.getItem("bloom_id_token");
   }
 

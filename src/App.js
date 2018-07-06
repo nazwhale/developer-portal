@@ -15,8 +15,8 @@ class App extends Component {
   }
 
   bouncer = () => {
-    console.log("checkin");
-    if (this.props.user.exp < Date.now() / 1000) {
+    const token = Auth.getToken();
+    if (Auth.isTokenExpired(token)) {
       this.handleLogout();
     }
     setTimeout(this.bouncer, 2000); //check if token expired every 2s
