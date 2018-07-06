@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CardInfo from "./cardInfo";
 import CardPlaceholder from "./cardPlaceholder";
 import CardUsers from "./cardUsers";
-import "../App.css";
+import "../css/App.css";
 import usersIcon from "../assets/users_icon.png";
 
 class CardList extends Component {

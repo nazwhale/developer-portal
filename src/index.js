@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./index.css";
-import Login from "./components/Login";
+import "./css/index.css";
+import Login from "./components/login/Login";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 

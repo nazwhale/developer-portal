@@ -1,17 +1,12 @@
 import decode from "jwt-decode";
-export default class AuthService {
-  // Initializing important variables
-  constructor() {
-    this.domain = "https://guarded-thicket-22918.herokuapp.com"; // API server domain
-    this.fetch = this.fetch.bind(this); // React binding stuff
-    this.login = this.login.bind(this);
-    this.getProfile = this.getProfile.bind(this);
-  }
 
-  login(email, password) {
+export default class AuthService {
+  login = (email, password) => {
+    const domain = "https://guarded-thicket-22918.herokuapp.com"; // API server domain
     console.log("fetching token for:", email, password);
+
     // Get a token from api server using the fetch api
-    return this.fetch(`${this.domain}/login`, {
+    return this.fetch(`${domain}/login`, {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -22,7 +17,7 @@ export default class AuthService {
       this.setToken(res.accessToken); // Setting the token in localStorage
       return Promise.resolve(res);
     });
-  }
+  };
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
@@ -58,10 +53,10 @@ export default class AuthService {
     localStorage.removeItem("bloom_id_token");
   }
 
-  getProfile() {
+  getProfile = () => {
     // Using jwt-decode npm package to decode the token
     return decode(this.getToken());
-  }
+  };
 
   fetch(url, options) {
     // performs api calls sending the required authentication headers

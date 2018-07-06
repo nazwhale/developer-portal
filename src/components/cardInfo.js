@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../App.css";
+import "../css/App.css";
 import placeholderLogo from "../assets/placeholder_logo.png";
 
 class CardInfo extends Component {

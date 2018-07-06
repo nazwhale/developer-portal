@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./css/App.css";
 import CardList from "./components/cardList";
 import Header from "./components/header";
 
-import AuthService from "./components/AuthService";
-import withAuth from "./components/withAuth";
+import AuthService from "./components/login/AuthService";
+import withAuth from "./components/login/withAuth";
 const Auth = new AuthService();
 
 class App extends Component {

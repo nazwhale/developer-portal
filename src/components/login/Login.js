@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import "../Login.css";
+import "../../css/Login.css";
 import AuthService from "./AuthService";
 
 class Login extends Component {
   constructor() {
     super();
-    this.handleChange = this.handleChange.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.Auth = new AuthService();
   }
 
@@ -14,7 +12,7 @@ class Login extends Component {
     if (this.Auth.loggedIn()) this.props.history.replace("/");
   }
 
-  handleFormSubmit(e) {
+  handleFormSubmit = e => {
     e.preventDefault();
 
     this.Auth.login(this.state.email, this.state.password)
@@ -24,7 +22,7 @@ class Login extends Component {
       .catch(err => {
         alert(err);
       });
-  }
+  };
 
   render() {
     return (
@@ -53,11 +51,11 @@ class Login extends Component {
     );
   }
 
-  handleChange(e) {
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
+  };
 }
 
 export default Login;
