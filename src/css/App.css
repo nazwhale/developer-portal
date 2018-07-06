@@ -48,7 +48,7 @@
 }
 
 .Card-user-icon {
-  opacity: 0.6;
+  opacity: 0.4;
   max-height: 40px;
   max-width: 40px;
   background-color: transparent;
@@ -59,7 +59,7 @@
 }
 
 .Card-user-icon:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .Header {
