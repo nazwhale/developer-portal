@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../css/Login.css";
 import AuthService from "./AuthService";
+import Logo from "./../../assets/pixel_flower.png";
 
 class Login extends Component {
   constructor() {
@@ -26,29 +27,34 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="center">
-        <div className="card">
-          <h3>Welcome to the dev portal</h3>
-          <h3>Login here...</h3>
-          <form onSubmit={this.handleFormSubmit}>
-            <input
-              className="form-item"
-              placeholder="Email goes here..."
-              name="email"
-              type="text"
-              onChange={this.handleChange}
-            />
-            <input
-              className="form-item"
-              placeholder="Password goes here..."
-              name="password"
-              type="password"
-              onChange={this.handleChange}
-            />
-            <input className="form-submit" value="SUBMIT" type="submit" />
-          </form>
+      <React.Fragment>
+        <div className="center">
+          <div className="card">
+            <h3>Welcome to the dev portal</h3>
+            <h3>Login here...</h3>
+            <form onSubmit={this.handleFormSubmit}>
+              <input
+                className="form-item"
+                placeholder="Email goes here..."
+                name="email"
+                type="text"
+                onChange={this.handleChange}
+              />
+              <input
+                className="form-item"
+                placeholder="Password goes here..."
+                name="password"
+                type="password"
+                onChange={this.handleChange}
+              />
+              <input className="form-submit" value="SUBMIT" type="submit" />
+            </form>
+          </div>
         </div>
-      </div>
+        <div className="Logo-container">
+          <img src={Logo} className="Logo" />
+        </div>
+      </React.Fragment>
     );
   }
 

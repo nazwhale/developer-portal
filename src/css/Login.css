@@ -39,6 +39,14 @@
   transition: 0.3s opacity ease;
   cursor: pointer;
 }
+
 .form-submit:hover {
   opacity: 0.6;
+}
+
+.Logo {
+  position: fixed;
+  bottom: -20px;
+  left: 5%;
+  max-height: 120px;
 }

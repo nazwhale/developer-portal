@@ -59,28 +59,53 @@
   background-color: transparent;
 }
 
+.Card-user-icon:hover {
+  opacity: 0.6;
+}
+
 .Header {
   background-color: #222;
-  height: 90px;
-  padding: 20px;
-  color: white;
+  height: 120px;
+  padding: 10px;
+  color: #00ffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+.Header a {
+  float: left;
+  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 18px;
+}
+
+.Header img {
+  float: left;
+  padding: 20px;
+}
+
 .Header-logo {
   height: 80px;
-  vertical-align: middle;
   padding-left: 10px;
 }
 
-.Header-logo-container {
-  text-align: left;
-  font-size: 1.2em;
+.Header-logout-button {
+  height: 35px;
   color: #00ffff;
+  background-color: #e52521;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  margin-top: 45px;
+  margin-bottom: 45px;
 }
 
-.Header-title {
-  padding-top: 100px;
-  text-align: right;
+.Header-logout-button:hover {
+  opacity: 0.6;
+}
+
+.Header-right {
+  float: right;
 }
