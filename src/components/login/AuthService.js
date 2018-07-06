@@ -10,7 +10,8 @@ export default class AuthService {
       method: "POST",
       body: JSON.stringify({
         email,
-        password
+        password,
+        expiry: "10s"
       })
     }).then(res => {
       console.log("response", res);

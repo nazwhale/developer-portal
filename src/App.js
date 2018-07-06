@@ -14,7 +14,16 @@ class App extends Component {
     this.props.history.replace("/login");
   }
 
+  bouncer = () => {
+    console.log("checkin");
+    if (this.props.user.exp < Date.now() / 1000) {
+      this.handleLogout();
+    }
+    setTimeout(this.bouncer, 2000); //check if token expired every 2s
+  };
+
   render() {
+    this.bouncer();
     return (
       <div className="App">
         <h2>Welcome {this.props.user.email}</h2>

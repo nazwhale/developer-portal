@@ -28,7 +28,8 @@ class Login extends Component {
     return (
       <div className="center">
         <div className="card">
-          <h1>Login</h1>
+          <h3>Welcome to the dev portal</h3>
+          <h3>Login here...</h3>
           <form onSubmit={this.handleFormSubmit}>
             <input
               className="form-item"
