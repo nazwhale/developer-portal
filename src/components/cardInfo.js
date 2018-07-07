@@ -22,7 +22,7 @@ class CardInfo extends Component {
   };
 
   renderImage = logo => {
-    if (!this.state.imageLoaded) {
+    if (this.state.imageLoaded === false) {
       return placeholderLogo;
     }
     return logo;
