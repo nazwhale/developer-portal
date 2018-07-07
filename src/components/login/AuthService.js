@@ -1,10 +1,10 @@
 import decode from "jwt-decode";
-import { fetchToken } from "../apiHelpers.js";
+import { fetchFromAPI } from "../helpers/apiHelpers.js";
 
 export default class AuthService {
   login = (email, password) => {
     console.log("Fetching token for:", email, password);
-    return fetchToken({
+    return fetchFromAPI("login", {
       method: "POST",
       body: JSON.stringify({
         email,

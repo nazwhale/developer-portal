@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../css/App.css";
 import placeholderLogo from "../assets/placeholder_logo.png";
+import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
 class CardInfo extends Component {
   constructor(props: Props) {
@@ -33,24 +34,16 @@ class CardInfo extends Component {
 
   handleSubmitNewName = event => {
     event.preventDefault();
-    const data = { name: this.state.newName };
-    const url = `https://guarded-thicket-22918.herokuapp.com/apps/${
-      this.state.id
-    }`;
+    const { id, newName } = this.state;
 
-    return fetch(url, {
+    return fetchFromAPI(`apps/${id}`, {
       method: "PUT",
-      headers: {
-        Authorization: process.env.REACT_APP_API_TOKEN,
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => {
-        response.json();
-        this.setState({ name: data.name });
+      body: JSON.stringify({
+        name: newName
       })
-      .catch(error => console.error(`Fetch Error =\n`, error));
+    }).then(body => {
+      this.setState({ name: newName });
+    });
   };
 
   handleNameChange = event => {
@@ -59,24 +52,16 @@ class CardInfo extends Component {
 
   handleSubmitNewLogo = event => {
     event.preventDefault();
-    const data = { logo: this.state.newLogo };
-    const url = `https://guarded-thicket-22918.herokuapp.com/apps/${
-      this.state.id
-    }`;
+    const { id, newLogo } = this.state;
 
-    return fetch(url, {
+    return fetchFromAPI(`apps/${id}`, {
       method: "PUT",
-      headers: {
-        Authorization: process.env.REACT_APP_API_TOKEN,
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => {
-        response.json();
-        this.setState({ logo: data.logo });
+      body: JSON.stringify({
+        logo: newLogo
       })
-      .catch(error => console.error(`Fetch Error =\n`, error));
+    }).then(body => {
+      this.setState({ logo: newLogo });
+    });
   };
 
   handleLogoChange = event => {

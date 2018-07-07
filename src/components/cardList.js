@@ -4,7 +4,7 @@ import CardPlaceholder from "./cardPlaceholder";
 import CardUsers from "./cardUsers";
 import "../css/App.css";
 import usersIcon from "../assets/users_icon.png";
-import { fetchProjects } from "./apiHelpers.js";
+import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
 class CardList extends Component {
   constructor() {
@@ -19,7 +19,7 @@ class CardList extends Component {
 
   componentDidMount() {
     //TODO: look into why images break eventually with "Failed to load resource: net::ERR_CONNECTION_RESET"
-    return fetchProjects({
+    return fetchFromAPI("apps", {
       method: "GET"
     }).then(body => {
       if (body.error === undefined) {

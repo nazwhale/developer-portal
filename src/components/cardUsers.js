@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/App.css";
+import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
 class CardUsers extends Component {
   constructor() {
@@ -21,21 +22,11 @@ class CardUsers extends Component {
   }
 
   fetchData = id => {
-    const url = `https://guarded-thicket-22918.herokuapp.com/apps/${id}/users`;
-
-    return fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: localStorage.getItem("bloom_id_token"),
-        "Content-Type": "application/json; charset=utf-8"
-      }
-    })
-      .then(response => {
-        response.json().then(body => {
-          this.setState({ usersFetched: true, users: body.users });
-        });
-      })
-      .catch(error => console.error(`Fetch Error =\n`, error));
+    return fetchFromAPI(`apps/${id}/users`, {
+      method: "GET"
+    }).then(body => {
+      this.setState({ usersFetched: true, users: body.users });
+    });
   };
 
   render() {
