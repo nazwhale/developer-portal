@@ -46,7 +46,7 @@ I also want the app to feel native to my user. As an app developer, I've assumed
 
 I've not adhered to Material Design's guidelines strictly, as I wanted to give the app some character. If my app can inspire a positive emotional reaction from my user, I've got more of their gumption to play with (inspired by [this article](http://andrewchen.co/psychd-funnel-conversion/)).
 
-To achieve this, I've thought about the interests of my user and have given a slight nod to nerd culture with my Super Mario colour scheme. I chose not to go too heavy handed with the theme, as I still want the app to appear professional and to allow the user to get the information they need with minimal distraction.
+To achieve this, I've thought about the interests of my user and have given a slight nod to nerd culture with my Super Mario colour scheme and code-style monospaced font. I chose not to go too heavy handed with the theme, as I still want the app to appear professional and to allow the user to get the information they need with minimal distraction.
 
 ### Future iterations
 
