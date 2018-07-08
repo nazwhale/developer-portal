@@ -93,7 +93,7 @@ class ProjectInfo extends Component {
                 onChange={this.handleNameChange}
               />
             </label>
-            <input type="submit" value="submit" />
+            <input className="Card-info-button" type="submit" value="Submit" />
           </form>
 
           <form onSubmit={this.handleSubmitNewLogo}>
@@ -105,7 +105,7 @@ class ProjectInfo extends Component {
                 onChange={this.handleLogoChange}
               />
             </label>
-            <input type="submit" value="submit" />
+            <input className="Card-info-button" type="submit" value="Submit" />
           </form>
         </div>
       </div>

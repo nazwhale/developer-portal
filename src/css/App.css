@@ -1,5 +1,5 @@
 .Card {
-  display: flex; /* or inline-flex */
+  display: flex;
   background-color: #43b047;
   height: 250px;
   width: 400px;
@@ -15,7 +15,22 @@
 
 .Card-container {
   justify-content: space-evenly;
-  display: flex; /* or inline-flex */
+  display: flex;
+}
+
+.Card-info-button {
+  color: #222;
+  font-size: 8px;
+  background-color: #fbd000;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  height: 20px;
+  width: 60px;
+}
+
+.Card-info-button:hover {
+  opacity: 0.6;
 }
 
 .Card-logo {
@@ -62,7 +77,7 @@
   letter-spacing: 0.2rem;
   transition: 0.3s opacity ease;
   cursor: pointer;
-  margin: 45px; /* to balance against larger pixel flower image */
+  margin: 45px;
 }
 
 .Card-users-button-disabled {
@@ -73,10 +88,10 @@
   letter-spacing: 0.2rem;
   transition: 0.3s opacity ease;
   cursor: pointer;
-  margin: 45px; /* to balance against larger pixel flower image */
+  margin: 45px;
 }
 
-.Card-users-next-button:hover {
+.Card-users-button:hover {
   opacity: 0.6;
 }
 
