@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/App.css";
-import CardList from "./components/cardList";
+import Projects from "./components/projects";
 import Header from "./components/header";
 
 import AuthService from "./components/login/AuthService";
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header user={this.props.user} history={this.props.history} />
-        <CardList />
+        <Projects />
       </div>
     );
   }

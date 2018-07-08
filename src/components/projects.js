@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import CardInfo from "./cardInfo";
+import ProjectInfo from "./projectInfo";
+import ProjectUsers from "./projectUsers";
 import CardPlaceholder from "./cardPlaceholder";
-import CardUsers from "./cardUsers";
 import "../css/App.css";
 import usersIcon from "../assets/users_icon.png";
 import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
-class CardList extends Component {
+class Projects extends Component {
   constructor() {
     super();
     this.state = {
@@ -79,9 +79,10 @@ class CardList extends Component {
             {projects.map(project => (
               <div className="Card" key={project.id}>
                 <div>
-                  <CardInfo
+                  <ProjectInfo
                     project={project}
                     projectsFetched={projectsFetched}
+                    selectedProjectId={selectedProject.id}
                   />
                 </div>
                 {this.isSelected(project)}
@@ -89,7 +90,7 @@ class CardList extends Component {
             ))}
           </div>
           <div className="Right">
-            <CardUsers project={selectedProject} />
+            <ProjectUsers project={selectedProject} />
           </div>
         </div>
       );
@@ -97,4 +98,4 @@ class CardList extends Component {
   }
 }
 
-export default CardList;
+export default Projects;

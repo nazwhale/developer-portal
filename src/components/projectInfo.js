@@ -3,7 +3,7 @@ import "../css/App.css";
 import placeholderLogo from "../assets/placeholder_logo.png";
 import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
-class CardInfo extends Component {
+class ProjectInfo extends Component {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -72,43 +72,45 @@ class CardInfo extends Component {
     const { created, name, logo } = this.state;
     return (
       <div>
-        <h3 className="Card-text-created">
-          {this.parseCreatedDatetime(created)}
-        </h3>
-        <h1 className="Card-text-name">{name}</h1>
-        <img
-          onLoad={this.onImageLoad}
-          src={this.renderImage(logo)}
-          className="Card-logo"
-          alt="logo"
-        />
+        <div>
+          <h3 className="Card-text-created">
+            {this.parseCreatedDatetime(created)}
+          </h3>
+          <h1 className="Card-text-name">{name}</h1>
+          <img
+            onLoad={this.onImageLoad}
+            src={this.renderImage(logo)}
+            className="Card-logo"
+            alt="logo"
+          />
 
-        <form onSubmit={this.handleSubmitNewName}>
-          <label htmlFor="username">
-            Enter new name
-            <input
-              type="text"
-              value={this.state.newName}
-              onChange={this.handleNameChange}
-            />
-          </label>
-          <input type="submit" value="submit" />
-        </form>
+          <form onSubmit={this.handleSubmitNewName}>
+            <label htmlFor="username">
+              Enter new name
+              <input
+                type="text"
+                value={this.state.newName}
+                onChange={this.handleNameChange}
+              />
+            </label>
+            <input type="submit" value="submit" />
+          </form>
 
-        <form onSubmit={this.handleSubmitNewLogo}>
-          <label htmlFor="logo">
-            Enter logo url
-            <input
-              type="text"
-              value={this.state.newLogo}
-              onChange={this.handleLogoChange}
-            />
-          </label>
-          <input type="submit" value="submit" />
-        </form>
+          <form onSubmit={this.handleSubmitNewLogo}>
+            <label htmlFor="logo">
+              Enter logo url
+              <input
+                type="text"
+                value={this.state.newLogo}
+                onChange={this.handleLogoChange}
+              />
+            </label>
+            <input type="submit" value="submit" />
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-export default CardInfo;
+export default ProjectInfo;

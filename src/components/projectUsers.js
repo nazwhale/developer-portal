@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../css/App.css";
 import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
-class CardUsers extends Component {
+class ProjectUsers extends Component {
   constructor() {
     super();
     this.state = {
@@ -39,4 +39,4 @@ class CardUsers extends Component {
   }
 }
 
-export default CardUsers;
+export default ProjectUsers;
