@@ -18,7 +18,6 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    //TODO: look into why images break eventually with "Failed to load resource: net::ERR_CONNECTION_RESET"
     return fetchFromAPI("apps", {
       method: "GET"
     }).then(body => {
@@ -62,11 +61,10 @@ class Projects extends Component {
   };
 
   render() {
-    //TODO: refactor this
     const { projectsFetched, projects, error, selectedProject } = this.state;
     if (error !== "") {
       return <CardPlaceholder text={`🛑Error: ${error}`} />;
-    } else if (!projectsFetched) {
+    } else if (projectsFetched === false) {
       return <CardPlaceholder text="Apps loading..." subText="" />;
     } else if (projects.length === 0) {
       return (

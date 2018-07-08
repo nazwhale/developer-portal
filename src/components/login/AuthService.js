@@ -3,7 +3,6 @@ import { fetchFromAPI } from "../helpers/apiHelpers.js";
 
 export default class AuthService {
   login = (email, password) => {
-    console.log("Fetching token for:", email, password);
     return fetchFromAPI("login", {
       method: "POST",
       body: JSON.stringify({
