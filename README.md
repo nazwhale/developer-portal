@@ -28,7 +28,7 @@ To login, in the email field enter whatever you like, and in the password field 
 
 ![Login view](https://i.imgur.com/NHNtdGC.png)
 
-Once logged-in, you'll see the apps returned by the dummy API, and a list of users for the currently selected app.
+Once logged-in, you'll see the apps returned by the dummy API and a list of users for the currently selected app.
 
 ![Main view](https://i.imgur.com/MhpSC3G.png)
 
