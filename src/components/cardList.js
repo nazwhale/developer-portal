@@ -35,9 +35,7 @@ class CardList extends Component {
   }
 
   selectProject = project => {
-    this.setState({
-      selectedProject: project
-    });
+    this.setState({ selectedProject: project });
   };
 
   isSelected = project => {

@@ -7,22 +7,41 @@ class Login extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
+    this.state = {
+      loading: false
+    };
   }
 
   componentWillMount() {
     if (this.Auth.loggedIn()) this.props.history.replace("/");
   }
 
-  handleFormSubmit = e => {
-    e.preventDefault();
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.setState({ loading: true });
 
     this.Auth.login(this.state.email, this.state.password)
       .then(res => {
+        this.setState({ loading: false });
         this.props.history.replace("/");
       })
       .catch(err => {
+        this.setState({ loading: false });
         alert(err);
       });
+  };
+
+  isLoading = () => {
+    if (this.state.loading === true) {
+      return <h3>Loading...</h3>;
+    }
+    return <h3>Login here...</h3>;
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   render() {
@@ -31,7 +50,7 @@ class Login extends Component {
         <div className="center">
           <div className="card">
             <h3>Welcome to the dev portal</h3>
-            <h3>Login here...</h3>
+            {this.isLoading()}
             <form onSubmit={this.handleFormSubmit}>
               <input
                 className="form-item"
@@ -55,12 +74,6 @@ class Login extends Component {
       </React.Fragment>
     );
   }
-
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
 }
 
 export default Login;
