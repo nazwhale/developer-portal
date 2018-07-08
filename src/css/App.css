@@ -18,6 +18,28 @@
   display: flex; /* or inline-flex */
 }
 
+.Card-logo {
+  height: 80px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.Card-text-created {
+  font-size: 1em;
+  font-weight: 200;
+}
+
+.Card-text-name {
+  font-size: 1em;
+}
+
+.Card-user-icon {
+  opacity: 0.4;
+  max-height: 40px;
+  max-width: 40px;
+  background-color: transparent;
+}
+
 .Card-users {
   background-color: #43b047;
   height: 800px;
@@ -32,26 +54,30 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.Card-text-created {
-  font-size: 1em;
-  font-weight: 200;
+.Card-users-button {
+  height: 35px;
+  color: #222;
+  background-color: #fbd000;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  margin: 45px; /* to balance against larger pixel flower image */
 }
 
-.Card-text-name {
-  font-size: 1em;
+.Card-users-button-disabled {
+  height: 35px;
+  color: #222;
+  background-color: grey;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  margin: 45px; /* to balance against larger pixel flower image */
 }
 
-.Card-logo {
-  height: 80px;
-  vertical-align: middle;
-  margin-bottom: 10px;
-}
-
-.Card-user-icon {
-  opacity: 0.4;
-  max-height: 40px;
-  max-width: 40px;
-  background-color: transparent;
+.Card-users-next-button:hover {
+  opacity: 0.6;
 }
 
 .selected {
