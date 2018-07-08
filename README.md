@@ -30,11 +30,11 @@ Then visit http://localhost:3000/ to see the app. You'll be redirected to the lo
 
 To login, in the email field enter whatever you like, and in the password field enter `hunter2`.
 
-![Login view](https://i.imgur.com/NHNtdGC.png)
+![Login view](https://i.imgur.com/yI19MVq.png)
 
 Once logged-in, you'll see the apps returned by the dummy API and a list of users for the currently selected app:
 
-![Main view](https://i.imgur.com/MhpSC3G.png)
+![Main view](https://i.imgur.com/UPk64S9.png)
 
 ### UI philosophy
 
