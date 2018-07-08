@@ -15,6 +15,10 @@ Requirements:
 
 ### Overview
 
+I build my developer portal as a web-app in React.js. It was created with [Create React App](https://github.com/facebook/create-react-app) and styled as "Bloom Dev Portal".
+
+Here's how to get going...
+
 ```
 $ git clone git@github.com:nazwhale/developer-portal.git
 $ cd developer-portal
@@ -28,9 +32,21 @@ To login, in the email field enter whatever you like, and in the password field 
 
 ![Login view](https://i.imgur.com/NHNtdGC.png)
 
-Once logged-in, you'll see the apps returned by the dummy API and a list of users for the currently selected app.
+Once logged-in, you'll see the apps returned by the dummy API and a list of users for the currently selected app:
 
 ![Main view](https://i.imgur.com/MhpSC3G.png)
+
+### UI philosophy
+
+My user is an app developer. They might be a novice, but I can assume a decent familiarity with tech. This knowledge influences the tradeoffs I can make.
+
+For example, a user comfortable with tech might have a greater threshold for complexity than the average user due to their familiarity with interfaces, but when they want information, they'll likely want it fast. As a result I considered trading-off a more cluttered UI in favour of having all the necessary information at easy reach (rather than hidden away in other views).
+
+I also want the app to feel native to my user. As an app developer, I've assumed some familiarity with Google products, and have taken some inspiration from Material Design (for example, the 3D feel of the cards achieved by drop shadows).
+
+I've not adhered to Material Design's guidelines strictly, as I wanted to give the app some character. If my app can inspire a positive emotional reaction from my user, I've got more of their gumption to play with (inspired by [this article](http://andrewchen.co/psychd-funnel-conversion/)).
+
+To achieve this, I've thought about the interests of my user and have given a slight nod to nerd culture with my Super Mario colour scheme. I chose not to go too heavy handed with the theme, as I still want the app to appear professional and to allow the user to get the information they need with minimal distraction.
 
 ### Future iterations
 
