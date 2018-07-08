@@ -2,7 +2,7 @@
 
 ### Brief
 
-“Your task is to build a browser-based developer portal in JavaScript against a dummy API that we've created! 🎉"
+> Your task is to build a browser-based developer portal in JavaScript against a dummy API that we've created! 🎉
 
 Requirements:
 
