@@ -1,6 +1,8 @@
 import decode from "jwt-decode";
 import { fetchFromAPI } from "../helpers/apiHelpers.js";
 
+const TOKEN_KEY = "bloom_id_token";
+
 export default class AuthService {
   login = (email, password) => {
     return fetchFromAPI("login", {
@@ -9,9 +11,9 @@ export default class AuthService {
         email,
         password
       })
-    }).then(res => {
-      this.setToken(res.accessToken);
-      return Promise.resolve(res);
+    }).then(response => {
+      this.setToken(response.accessToken);
+      return Promise.resolve(response);
     });
   };
 
@@ -32,15 +34,15 @@ export default class AuthService {
   }
 
   setToken(idToken) {
-    localStorage.setItem("bloom_id_token", idToken);
+    localStorage.setItem(TOKEN_KEY, idToken);
   }
 
   getToken() {
-    return localStorage.getItem("bloom_id_token");
+    return localStorage.getItem(TOKEN_KEY);
   }
 
   logout() {
-    localStorage.removeItem("bloom_id_token");
+    localStorage.removeItem(TOKEN_KEY);
   }
 
   getProfile = () => {

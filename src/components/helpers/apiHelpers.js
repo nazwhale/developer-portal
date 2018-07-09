@@ -1,14 +1,7 @@
-// import AuthService from "./login/AuthService";
-// const Auth = new AuthService();
-
-// if (this.loggedIn()) {
-//   headers["Authorization"] = this.getToken();
-// }
-
-const domain = "https://guarded-thicket-22918.herokuapp.com";
+const DOMAIN = "https://guarded-thicket-22918.herokuapp.com";
 
 export function fetchFromAPI(path, options) {
-  const url = `${domain}/${path}`;
+  const url = `${DOMAIN}/${path}`;
   const headers = {
     Accept: "application/json",
     "Content-Type": "application/json"
