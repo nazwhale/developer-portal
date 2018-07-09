@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import ProjectInfo from "./projectInfo";
-import ProjectUsers from "./projectUsers";
-import CardPlaceholder from "./cardPlaceholder";
-import "../css/App.css";
-import usersIcon from "../assets/users_icon.png";
 import { fetchFromAPI } from "./helpers/apiHelpers.js";
+import "../css/App.css";
+import ProjectInfo from "./ProjectInfo";
+import ProjectUsers from "./ProjectUsers";
+import CardPlaceholder from "./CardPlaceholder";
+import usersIcon from "../assets/users_icon.png";
 
 class Projects extends Component {
   constructor() {

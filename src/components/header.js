@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import logo from "../assets/pixel_flower.png";
 import "../css/App.css";
+import logo from "../assets/pixel_flower.png";
 
 import AuthService from "./login/AuthService";
 const Auth = new AuthService();

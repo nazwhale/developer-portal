@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "../css/App.css";
 import { fetchFromAPI } from "./helpers/apiHelpers.js";
+import "../css/App.css";
 
 class ProjectUsers extends Component {
   constructor() {

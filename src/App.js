@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./css/App.css";
-import Projects from "./components/projects";
-import Header from "./components/header";
+import Projects from "./components/Projects";
+import Header from "./components/Header";
 
 import AuthService from "./components/login/AuthService";
 import withAuth from "./components/login/withAuth";

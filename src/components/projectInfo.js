@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { fetchFromAPI } from "./helpers/apiHelpers.js";
 import "../css/App.css";
 import placeholderLogo from "../assets/placeholder_logo.png";
-import { fetchFromAPI } from "./helpers/apiHelpers.js";
 
 class ProjectInfo extends Component {
   constructor(props: Props) {
